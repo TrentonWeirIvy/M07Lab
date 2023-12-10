@@ -7,8 +7,8 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 
-const port = process.env.PORT;
-const serial = process.env.JWT_SERIALIZE;
+const port = process.env.PORT ?? 3000;
+const serial = process.env.JWT_SERIALIZE ?? '123';
 
 app.use(cors());
 app.use(bodyParser.json());

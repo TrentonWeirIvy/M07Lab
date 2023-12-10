@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Post Message</button>
+    <script>
+        const post = async (url,data) => (await fetch(url, {
+            method:'POST',
+            mode:'cors',
+            cache:'no-cache',
+            headers:{
+                "Content-Type":"application/json"
+            },
+            redirect:'follow',
+            referrerPolicy:'no-referrer',
+            body: JSON.stringify(data),
+        })).json();
+        const funk = async () => {
+            console.log('click')
+            await post('http://localhost:3000/messages',{message:'New Message'});
+        }
+
+        document.querySelector('button').addEventListener('click', () => funk());
+        
+    </script>
+    
+</body>
+</html>

@@ -10,6 +10,7 @@ import Messages from './components/Messages';
 import NewMessage from './components/NewMessage';
 import MessageItem from './components/Message';
 import RegisterUser from './components/RegisterUser';
+import LogIn from './components/LogIn';
 
 'use strict';
 
@@ -30,6 +31,10 @@ const routes = [
     path: '/Register',
     component: RegisterUser,
   },
+  {
+    path:'/Login',
+    component:LogIn
+  }
 ];
 
 const router = createRouter({

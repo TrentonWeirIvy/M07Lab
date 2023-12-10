@@ -8,9 +8,10 @@
               Messages {{ msg }}
             </v-card-title>
             <v-list>
-              <v-list-item v-for="(message, index) in this.$store.state.msgs" :key="index" :to="'messageitem/'+index">
+              <v-list-item v-for="(message, index) in msgs" :key="index" :to="'messageitem/' + index">
                 <v-list-item-content>
-                  <v-list-item-title class="display-1" v-text="message" />
+                  <v-list-item-title class="display-1" v-text="message?.text" />
+                  <v-list-item-title class="display-1" v-text="message?.user" />
                 </v-list-item-content>
               </v-list-item>
             </v-list>
@@ -22,8 +23,6 @@
 </template>
 
 <script>
-
-
 export default {
   name: 'MessagesMsg',
   props: {
@@ -38,5 +37,4 @@ export default {
     this.$store.dispatch('getMessages');
   },
 };
-
 </script>

@@ -3,9 +3,9 @@
     <v-row justify="center">
       <v-col cols="12" sm="8" md="6">
         <v-card>
-          <v-form @submit.prevent="register">
+          <v-form @submit.prevent="login">
             <v-card-title class="headline" style="background-color: black; color:white;">
-              Register
+              Login
             </v-card-title>
 
             <v-container>
@@ -20,7 +20,7 @@
             </v-container>
 
             <v-card-actions>
-              <v-btn @click="register">Register</v-btn>
+              <v-btn @click="login">Login</v-btn>
             </v-card-actions>
           </v-form>
         </v-card>
@@ -38,8 +38,8 @@ export default {
     };
   },
   methods: {
-    async register() {
-      this.$store.dispatch('register', { username: this.username, password: this.password });
+    async login() {
+      this.$store.dispatch('login', { username: this.username, password: this.password });
     },
   },
 };

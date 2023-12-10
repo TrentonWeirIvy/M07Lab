@@ -9,6 +9,7 @@ console.log(origin);
 export default createStore({
   state: {
     msgs: [],
+    token:localStorage.getItem('token') ?? ''
   },
   mutations: {
     updateMessages(state, messages) {
@@ -16,6 +17,13 @@ export default createStore({
     },
     newMessage(state, message){
         state.msgs.push(message);
+    },
+    auth(state,token){
+      state.token = token;
+    },
+    logout(state){
+      state.token = '';
+      localStorage.clear('token');
     }
   },
   actions:{
@@ -35,9 +43,17 @@ export default createStore({
         commit('newMessage', msg.message);
     },
     async register({commit}, registerData){
-      let user = (await axios.post(`${origin}/register`, registerData)).data;
-      commit('registerResponse', user);
-  },
+      const token = (await axios.post(`${origin}/register`, registerData)).data;
+      localStorage.setItem("token", token);
+      axios.defaults.headers.common["Authorization"] = token;
+      commit('auth', token);
+    },
+    async login({commit}, registerData){
+        const token = (await axios.post(`${origin}/login`, registerData)).data;
+        localStorage.setItem("token", token);
+        axios.defaults.headers.common["Authorization"] = token;
+        commit('auth', token);
+    }
     
   }
 });

@@ -7,7 +7,7 @@
                 <v-toolbar-title>Message</v-toolbar-title>
             </v-toolbar>
             <v-card-text>
-                {{ messageBody }}
+                {{ message.text }}
             </v-card-text>
           </v-card>
         </v-col>
@@ -24,12 +24,12 @@ export default {
   name: 'MessageItem',
   data() {
     return {
-      messageBody: '',
+      message: {},
     };
   },
   async created(){
     console.log(this.$route.params.id);
-    this.messageBody = await this.$store.dispatch('getMessage',this.$route.params.id)
+    this.message = await this.$store.dispatch('getMessage',this.$route.params.id)
   }
 };
 </script>

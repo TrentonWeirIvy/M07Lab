@@ -9,6 +9,7 @@ import { createRouter, createWebHistory } from 'vue-router'; // Import necessary
 import Messages from './components/Messages';
 import NewMessage from './components/NewMessage';
 import MessageItem from './components/Message';
+import RegisterUser from './components/RegisterUser';
 
 'use strict';
 
@@ -24,6 +25,10 @@ const routes = [
   {
     path: '/messageItem/:id',
     component: MessageItem,
+  },
+  {
+    path: '/Register',
+    component: RegisterUser,
   },
 ];
 

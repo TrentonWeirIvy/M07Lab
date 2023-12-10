@@ -4,6 +4,7 @@
       <v-btn flat to="/">Messages</v-btn>
       <v-btn flat to="/newMessage">New Messages</v-btn>
       <v-spacer/>
+      <v-btn flat to="/Register">Register</v-btn>
       <v-btn flat>Login</v-btn>
     </v-toolbar>
       

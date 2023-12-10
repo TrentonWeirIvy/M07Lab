@@ -34,6 +34,10 @@ export default createStore({
         })).data;
         commit('newMessage', msg.message);
     },
+    async register({commit}, registerData){
+      let user = (await axios.post(`${origin}/register`, registerData)).data;
+      commit('registerResponse', user);
+  },
     
   }
 });
